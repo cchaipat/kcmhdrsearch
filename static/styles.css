@@ -1,0 +1,73 @@
+/* styles.css */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.search-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+#doctor-name {
+  padding: 8px;
+  width: 70%;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.profile-display {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+}
+
+.doctor-photo {
+  width: 120px;
+  height: auto;
+  max-width: 120px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.doctor-info {
+  flex-grow: 1;
+}
+
+.schedule-section {
+  margin-top: 20px;
+}
+
+#schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#schedule-table th, #schedule-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
