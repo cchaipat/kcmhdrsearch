@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section for Image -->
+        <div class="image-section">
+            <label for="file">Upload Photo</label>
+            <input type="file" id="file" name="file" required>
+            <img id="image-preview" src="#" alt="Image Preview">
+        </div>
+
+        <!-- Right Section for Form Elements -->
+        <div class="form-section">
+            <h2>Doctor Profile</h2>
+            <form onsubmit="return false;">
+                <div class="name-group">
+                    <div class="field">
+                        <label for="position">คำนำหน้า:</label>
+                        <input type="text" id="position" name="position" required placeholder="คำนำหน้า">
+                    </div>
+
+                    <div class="field">
+                        <label for="thai_first_name">First Name (Thai):</label>
+                        <input type="text" id="thai_first_name" name="thai_first_name" required placeholder="Thai First Name">
+                    </div>
+                    <div class="field">
+                        <label for="thai_surname">Surname (Thai):</label>
+                        <input type="text" id="thai_surname" name="thai_surname" required placeholder="Thai Surname">
+                    </div>
+                    <div class="field">
+                        <label for="english_first_name">First Name (English):</label>
+                        <input type="text" id="english_first_name" name="english_first_name" required placeholder="English First Name">
+                    </div>
+                    <div class="field">
+                        <label for="english_surname">Surname (English):</label>
+                        <input type="text" id="english_surname" name="english_surname" required placeholder="English Surname">
+                    </div>
+                    
+                </div>
+
+                
+
+                <label for="department">Department:</label>
+                <select id="department" name="department" required>
+                    {% for department in departments %}
+                        <option value="{{ department }}">{{ department }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="specialty">Specialty:</label>
+                <select id="specialty" name="specialty" required>
+                    {% for specialty in specialties %}
+                        <option value="{{ specialty }}">{{ specialty }}</option>
+                    {% endfor %}
+                </select>
+
+                <div id="education-section">
+                    <h3>Education</h3>
+                    <div class="education-entry">
+                        <input type="text" name="education_year[]" placeholder="Year" class="year-input">
+                        <input type="text" name="education_credential[]" placeholder="Credential" class="credential-input">
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addEducation()">more education+</button> 
+
+                <div id="interest-section">
+                    <h3>Interest</h3>
+                    <div class="interest-entry">
+                        <input type="text" name="interest[]" placeholder="Interest" class="interest-input">
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addInterest()">more interest+</button>
+
+
+                <!-- Doctor Schedule Section -->
+                <h3>Doctor Schedule</h3>
+                <div id="schedule-table">
+
+                    <div class="schedule-header">
+                        <div>Day</div>
+                        <div>Start</div>
+                        <div>End</div>
+                        <div>Location</div>
+                    </div>
+                    <div id="schedule-entry">
+                        <div class="schedule-row">
+                            <select name="schedule_day[]">
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+
+                            <select name="start_time[]">
+                                <option value="08:00">08:00</option>
+                                <option value="08:30">08:30</option>
+                                <option value="09:00">09:00</option>
+                                <option value="09:00">09:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <!-- Add more time intervals as needed -->
+                            </select>
+
+                            <select name="end_time[]">
+                                <option value="08:30">08:30</option>
+                                <option value="09:00">09:00</option>
+                                <option value="09:00">09:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                                <!-- Add more time intervals as needed -->
+                            </select>
+
+                            <select name="location[]">
+                                {% for location in locations %}
+                                    <option value="{{ location }}">{{ location }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addScheduleEntry()">more schedule+</button>
+
+                <br><br><br>
+                <!-- Free Text Area for Additional Comments or Notes -->
+                <div class="form-group">
+                    <label for="additional_comments">Additional Comments:</label>
+                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Anything you want to say..."></textarea>
+                </div>
+
+                <button type="button" onclick="cropAndUpload()">Save Profile</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Pass the locations array to JavaScript
+        const locations = {{ locations | tojson }};
+    </script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+</html>
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <-- Left Section for Image -->
+     <!--    <div class="image-section">
+            <label for="file">Upload Photo</label>
+            <input type="file" id="file" name="file" required>
+            <img id="image-preview" src="#" alt="Image Preview">
+        </div> -->
+
+       <!-- 
+        <div class="form-section">
+            <h2>Doctor Profile</h2>
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+                <label for="department">Department:</label>
+                <select id="department" name="department" required>
+                    {% for department in departments %}
+                        <option value="{{ department }}">{{ department }}</option>
+                    {% endfor %}
+                </select>
+
+                <div id="education-section">
+                    <h3>Education</h3>
+                    <div class="education-entry">
+                        <input type="text" name="education_year[]" placeholder="Year" class="year-input">
+                        <input type="text" name="education_credential[]" placeholder="Credential" class="credential-input">
+                    </div>
+                </div>
+                <button type="button" onclick="addEducation()">Add More Education</button>
+                <button type="submit" onclick="cropAndUpload()">Save Profile</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script> -->
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+</body>
+</html> -->

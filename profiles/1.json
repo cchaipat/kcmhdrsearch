@@ -1,0 +1,50 @@
+{
+    "id": 1,
+    "username": "doc001",
+    "position": "ผศ.ดร.นพ.",
+    "thai_first_name": "ชัยภัทร",
+    "thai_surname": "ชุณหรัศมิ์",
+    "english_first_name": "Chaipat",
+    "english_surname": "Chunharas",
+    "department": "General Medicine",
+    "specialty": "Neurology",
+    "education": [
+        {
+            "year": "2019",
+            "credential": "PhD"
+        },
+        {
+            "year": "2013",
+            "credential": "Neurology"
+        },
+        {
+            "year": "2011",
+            "credential": "Internal Medicine"
+        },
+        {
+            "year": "2007",
+            "credential": "MD"
+        }
+    ],
+    "interest": [
+        "Cognitive Neuroscience",
+        "Psychology",
+        "Neurology"
+    ],
+    "schedule": [
+        {
+            "day": "Monday",
+            "start_time": "13:00",
+            "end_time": "16:00",
+            "location": "Outpatient Clinic - Room 505"
+        },
+        {
+            "day": "Thursday",
+            "start_time": "09:00",
+            "end_time": "12:00",
+            "location": "Neurology Department - Room 808"
+        }
+    ],
+    "additional_comments": "Yay",
+    "image": "1.jpg"
+}
